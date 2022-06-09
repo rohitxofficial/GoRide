@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GoRide - Drivers</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+    <div class="drivers"><img src="../img/drivers.png" alt="Logo"></div>
+
+    <div class="login-form">
+        <form action="/drivers-active" method="post">
+            <h1>Login</h1>
+            <div class="content">
+                <div class="input-field">
+                    <input name="email" type="email" placeholder="Email" autocomplete="nope">
+                </div>
+                <div class="input-field">
+                    <input name="password" type="password" placeholder="Password" autocomplete="new-password">
+                </div>
+                <input id="longitude" name="longitude" required="" value="" type="hidden" />
+                <input id="latitude" name="latitude" required="" value="" type="hidden" />
+            </div>
+            <div class="action">
+                <button>Sign in</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        var longitude = document.getElementById("longitude");
+        var latitude = document.getElementById("latitude");
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+        }
+
+        function showPosition(position) {
+            longitude.value = position.coords.longitude;
+            latitude.value = position.coords.latitude;
+        }
+
+        getLocation();
+    </script>
+</body>
+
+</html>
